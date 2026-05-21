@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skool Builders — About Page Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#f5f4f2;}
+
+.tape{height:14px;background:repeating-linear-gradient(90deg,#F5A623 0px,#F5A623 22px,#1A1A1A 22px,#1A1A1A 44px);}
+
+/* HERO HEADER */
+.hero{
+  background:#1A1A1A;
+  padding:64px 56px 56px;
+  border-bottom:1px solid #2a2a2a;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-text{
+  position:absolute;
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:200px;
+  font-weight:700;
+  color:rgba(245,166,35,0.04);
+  right:-20px;
+  top:50%;
+  transform:translateY(-50%);
+  line-height:1;
+  pointer-events:none;
+  white-space:nowrap;
+  letter-spacing:-0.05em;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:#F5A623;margin-bottom:20px;
+}
+.hero-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:64px;font-weight:700;
+  color:#fff;line-height:1.05;
+  letter-spacing:-0.03em;
+  margin-bottom:16px;
+  max-width:700px;
+}
+.hero-title span{color:#F5A623;}
+.hero-sub{
+  font-size:16px;font-weight:300;
+  color:rgba(255,255,255,0.5);
+  line-height:1.6;
+  max-width:520px;
+}
+.hero-stats{
+  display:flex;gap:40px;margin-top:40px;
+  padding-top:32px;
+  border-top:1px solid rgba(245,166,35,0.15);
+  flex-wrap:wrap;
+}
+.hero-stat-num{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:32px;font-weight:700;color:#F5A623;
+  line-height:1;margin-bottom:4px;
+}
+.hero-stat-label{
+  font-size:11px;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,0.4);
+}
+
+/* FRAMEWORK BODY */
+.framework{background:#1A1A1A;padding:0 56px 64px;}
+
+/* QUIZ */
+.quiz-toggle-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;
+  padding:12px 22px;
+  background:#2a2a2a;color:#F5A623;
+  border:1px solid #3a3a3a;border-radius:9px;
+  cursor:pointer;transition:all 0.15s;
+  margin-bottom:40px;
+}
+.quiz-toggle-btn:hover{background:#333;border-color:#555;}
+.quiz-block{background:#1e1e1e;border:1px solid #2a2a2a;border-radius:16px;padding:36px;margin-bottom:40px;display:none;}
+.quiz-block.open{display:block;}
+.quiz-heading{font-size:17px;font-weight:600;color:#fff;margin-bottom:6px;}
+.quiz-sub{font-size:14px;color:#666;margin-bottom:28px;}
+.quiz-questions{display:flex;flex-direction:column;gap:24px;}
+.q-label{font-size:12px;font-weight:600;color:#F5A623;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;}
+.q-options{display:flex;gap:8px;flex-wrap:wrap;}
+.q-opt{font-size:13px;padding:8px 16px;border-radius:24px;border:1px solid #333;background:#2a2a2a;color:#aaa;cursor:pointer;transition:all 0.15s;}
+.q-opt:hover{border-color:#555;color:#fff;}
+.q-opt.sel{background:#F5A623;color:#1A1A1A;border-color:#F5A623;font-weight:600;}
+.quiz-result{display:none;margin-top:28px;padding:24px;background:#111;border-radius:12px;border:1px solid #2a2a2a;}
+.quiz-result.show{display:block;}
+.result-label{font-size:11px;font-weight:600;color:#F5A623;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.result-picks{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.result-pick{display:inline-flex;align-items:center;gap:7px;background:#1e1e1e;border:1px solid #F5A623;color:#F5A623;font-size:13px;font-weight:600;padding:8px 16px;border-radius:24px;cursor:pointer;transition:background 0.15s;}
+.result-pick:hover{background:#2a2000;}
+.result-why{font-size:13px;color:#888;line-height:1.7;}
+.quiz-btn{display:inline-flex;align-items:center;gap:7px;margin-top:20px;font-size:13px;font-weight:600;padding:11px 22px;background:#F5A623;color:#1A1A1A;border:none;border-radius:8px;cursor:pointer;}
+.quiz-btn:hover{background:#e09610;}
+.quiz-reset{font-size:12px;color:#555;background:none;border:none;cursor:pointer;margin-top:12px;display:block;text-decoration:underline;}
+.quiz-reset:hover{color:#aaa;}
+
+/* TABS */
+.top-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;}
+.tab-btn{font-size:12px;font-weight:500;padding:9px 16px;border-radius:24px;border:1px solid #3a3a3a;background:#242424;color:#aaa;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:6px;line-height:1;}
+.tab-btn i{font-size:13px;}
+.tab-btn:hover{background:#2e2e2e;color:#fff;border-color:#555;}
+.tab-btn.active{background:#F5A623;color:#1A1A1A;border-color:#F5A623;font-weight:600;}
+
+.sec{display:none;}
+.sec.active{display:block;}
+
+.s-hdr{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.num-b{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;}
+.s-ttl{font-size:28px;font-weight:600;color:#fff;letter-spacing:-0.02em;}
+.tag-r{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
+.tag{font-size:11px;font-weight:600;padding:5px 13px;border-radius:24px;letter-spacing:.05em;text-transform:uppercase;}
+
+.v-card{background:#242424;border:1px solid #2e2e2e;border-radius:14px;padding:40px 32px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;min-height:150px;position:relative;overflow:hidden;}
+.v-stripe{position:absolute;bottom:0;left:0;right:0;height:6px;background:repeating-linear-gradient(90deg,#F5A623 0px,#F5A623 16px,#1A1A1A 16px,#1A1A1A 32px);}
+
+.i-card{background:#1e1e1e;border:1px solid #2a2a2a;border-radius:14px;padding:28px;margin-bottom:16px;}
+.i-row{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start;}
+.i-row:last-child{margin-bottom:0;}
+.i-dot{width:28px;height:28px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#2a2a2a;}
+.i-dot i{font-size:14px;color:#F5A623;}
+.i-text{font-size:15px;color:#bbb;line-height:1.7;padding-top:3px;}
+.i-text strong{font-weight:600;color:#fff;}
+
+.tpl-btn{display:inline-flex;align-items:center;gap:8px;margin-top:4px;font-size:13px;font-weight:600;padding:12px 22px;background:#F5A623;color:#1A1A1A;border:none;border-radius:9px;cursor:pointer;letter-spacing:.02em;transition:background 0.15s;}
+.tpl-btn:hover{background:#e09610;}
+.tpl-a{display:none;}
+.tpl-a.open{display:block;}
+.tpl-wrap{background:#111;border-radius:14px;padding:28px;margin-top:16px;border:1px solid #222;}
+.tpl-lbl{font-size:11px;font-weight:600;color:#444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
+.tpl-blk{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:20px;font-size:13px;color:#999;line-height:2;white-space:pre-wrap;font-family:'Inter',sans-serif;}
+.tpl-blk em{color:#555;font-style:italic;}
+.cp-btn{font-size:12px;padding:8px 16px;border-radius:8px;border:1px solid #333;background:transparent;color:#666;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-top:12px;transition:all 0.15s;}
+.cp-btn:hover{background:#222;color:#fff;border-color:#555;}
+
+/* MISTAKES */
+.mistakes-card{background:#1a1000;border:1px solid #3a2a00;border-radius:14px;padding:24px 28px;margin-top:16px;}
+.mistakes-heading{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#F5A623;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px;}
+.mistake-row{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
+.mistake-row:last-child{margin-bottom:0;}
+.mistake-num{width:22px;height:22px;border-radius:50%;background:#F5A623;color:#1A1A1A;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.mistake-text{font-size:14px;color:#c8a060;line-height:1.65;}
+.mistake-text strong{color:#F5A623;font-weight:600;}
+
+/* VISUAL BITS */
+.step-row{display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;}
+.step-box{border:1.5px solid;border-radius:9px;padding:10px 18px;font-size:13px;font-weight:500;text-align:center;}
+.arr{color:#444;font-size:18px;}
+.day-sq{width:34px;height:34px;border-radius:7px;background:#F5A623;color:#1A1A1A;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;}
+.day-row{display:flex;gap:6px;justify-content:center;margin-bottom:12px;}
+.chk-row{display:flex;align-items:center;gap:12px;padding:6px 0;font-size:14px;color:#ccc;}
+.chk-sq{width:24px;height:24px;border-radius:6px;background:#F5A623;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pain-wrap{display:grid;grid-template-columns:1fr 3px 1fr;align-items:center;width:100%;max-width:380px;}
+.pain-div{background:#F5A623;height:90px;}
+.pain-side{padding:0 1.25rem;}
+.pain-item{font-size:13px;color:#444;text-decoration:line-through;line-height:2.4;text-align:center;}
+.fix-badge{display:inline-block;background:#1e1e1e;color:#F5A623;font-size:12px;padding:5px 14px;border-radius:20px;margin:4px 0;border:1px solid #333;}
+.fix-col{display:flex;flex-direction:column;align-items:center;}
+.stk-row{border:1px solid #2a2a2a;border-radius:7px;padding:9px 16px;font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px;background:#1a1a1a;color:#aaa;}
+.stk-row.hi{background:#F5A623;border-color:#F5A623;color:#1A1A1A;font-weight:600;}
+.lock-box{background:#0e0e0e;border:1px solid #333;border-radius:12px;padding:20px 32px;display:inline-flex;flex-direction:column;align-items:center;gap:8px;}
+.scaf-pole{width:7px;background:#2a2a2a;border-radius:3px;}
+.scaf-rung{height:6px;border-radius:3px;background:#2a2a2a;margin-bottom:8px;}
+.strikeout{text-decoration:line-through;color:#F5A623;font-size:16px;line-height:2.4;display:block;}
+.accent{color:#F5A623;text-decoration:underline;text-underline-offset:4px;}
+
+/* CTA */
+.cta-section{background:#1C2B1A;padding:88px 56px 72px;text-align:center;position:relative;overflow:hidden;}
+.cta-bg-icon{position:absolute;opacity:.04;font-size:340px;top:50%;left:50%;transform:translate(-50%,-50%);color:#F5A623;pointer-events:none;line-height:1;}
+.cta-eyebrow{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7aaa60;margin-bottom:20px;position:relative;}
+.cta-heading{font-family:'Playfair Display',Georgia,serif;font-size:44px;font-weight:700;color:#fff;line-height:1.2;max-width:760px;margin:0 auto 16px;position:relative;}
+.cta-divider{width:52px;height:3px;background:#F5A623;margin:0 auto 24px;position:relative;}
+.cta-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;color:#ffffff;line-height:1.7;max-width:580px;margin:0 auto 36px;position:relative;}
+.cta-checks{display:inline-flex;flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:20px;position:relative;}
+.cta-check{display:flex;align-items:center;gap:12px;font-size:16px;color:rgba(255,255,255,0.9);}
+.cta-check-icon{width:24px;height:24px;border-radius:50%;background:#F5A623;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cta-checks-wrap{display:flex;justify-content:center;margin-bottom:28px;position:relative;}
+.cta-btn{display:inline-block;background:#F5A623;color:#1A1A1A;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:18px 44px;border-radius:50px;text-decoration:none;transition:transform 0.1s,box-shadow 0.1s;position:relative;box-shadow:6px 6px 0 #0e1a0e;}
+.cta-btn:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #0e1a0e;}
+.cta-note{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.3);margin-top:16px;position:relative;}
+
+/* FOOTER */
+.footer{background:#fff;padding:48px 56px 40px;text-align:center;border-top:1px solid #eee;}
+.footer-logo{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#1a1a1a;margin-bottom:16px;}
+.footer-links{display:flex;justify-content:center;gap:8px;font-size:12px;color:#aaa;margin-bottom:20px;flex-wrap:wrap;align-items:center;}
+.footer-links a{color:#aaa;text-decoration:none;transition:color 0.15s;}
+.footer-links a:hover{color:#1a1a1a;}
+.footer-links span{color:#ddd;}
+.footer-legal{font-size:12px;color:#bbb;line-height:1.8;max-width:580px;margin:0 auto;}
+.footer-legal a{color:#bbb;text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="tape"></div>
+
+<!-- HERO HEADER -->
+<div class="hero">
+  <div class="hero-bg-text">Build</div>
+  <div class="hero-eyebrow">
+    <i class="ti ti-building-skyscraper" style="font-size:14px;" aria-hidden="true"></i>
+    Skool Builders
+  </div>
+  <h1 class="hero-title">About Page<br><span>Framework</span></h1>
+  <p class="hero-sub">10 copy blueprints. Pick the one that fits your build.</p>
+</div>
+
+<!-- FRAMEWORK BODY -->
+<div class="framework">
+
+  <!-- QUIZ TOGGLE -->
+  <div style="padding-top:48px;">
+    <button class="quiz-toggle-btn" onclick="toggleQuiz()">
+      <i class="ti ti-tool" aria-hidden="true"></i>
+      <span id="quiz-toggle-label">Not sure which blueprint to use? Find out in 3 questions</span>
+      <i class="ti ti-chevron-down" id="quiz-chevron" style="font-size:12px;transition:transform 0.2s;" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="quiz-block" id="quiz-block">
+    <div class="quiz-heading">Find your best blueprint</div>
+    <div class="quiz-sub">Answer 3 quick questions and we will point you to the right one.</div>
+    <div class="quiz-questions">
+      <div>
+        <div class="q-label">1. What best describes your niche?</div>
+        <div class="q-options">
+          <button class="q-opt" data-q="1" data-v="system" onclick="selectOpt(this)">I teach a system or process</button>
+          <button class="q-opt" data-q="1" data-v="passion" onclick="selectOpt(this)">Passion, hobby or lifestyle</button>
+          <button class="q-opt" data-q="1" data-v="transform" onclick="selectOpt(this)">I help people transform something</button>
+          <button class="q-opt" data-q="1" data-v="pro" onclick="selectOpt(this)">Professionals or business owners</button>
+        </div>
+      </div>
+      <div>
+        <div class="q-label">2. What is your price point?</div>
+        <div class="q-options">
+          <button class="q-opt" data-q="2" data-v="free" onclick="selectOpt(this)">Free</button>
+          <button class="q-opt" data-q="2" data-v="low" onclick="selectOpt(this)">$9 to $29/mo</button>
+          <button class="q-opt" data-q="2" data-v="mid" onclick="selectOpt(this)">$29 to $99/mo</button>
+          <button class="q-opt" data-q="2" data-v="high" onclick="selectOpt(this)">$99+/mo</button>
+        </div>
+      </div>
+      <div>
+        <div class="q-label">3. What is your strongest asset?</div>
+        <div class="q-options">
+          <button class="q-opt" data-q="3" data-v="story" onclick="selectOpt(this)">My personal story</button>
+          <button class="q-opt" data-q="3" data-v="creds" onclick="selectOpt(this)">My credentials and results</button>
+          <button class="q-opt" data-q="3" data-v="resources" onclick="selectOpt(this)">The resources I have built</button>
+          <button class="q-opt" data-q="3" data-v="energy" onclick="selectOpt(this)">The community energy</button>
+        </div>
+      </div>
+    </div>
+    <button class="quiz-btn" onclick="runQuiz()"><i class="ti ti-hammer" aria-hidden="true"></i> Show my blueprint</button>
+    <div class="quiz-result" id="quiz-result">
+      <div class="result-label">Your recommended blueprints</div>
+      <div class="result-picks" id="result-picks"></div>
+      <div class="result-why" id="result-why"></div>
+      <button class="quiz-reset" onclick="resetQuiz()">Start over</button>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="top-nav">
+    <button class="tab-btn active" onclick="show('s1')">01 Blueprint</button>
+    <button class="tab-btn" onclick="show('s2')">02 Quick Build</button>
+    <button class="tab-btn" onclick="show('s3')">03 Hard Hat</button>
+    <button class="tab-btn" onclick="show('s4')">04 Crew Magnet</button>
+    <button class="tab-btn" onclick="show('s5')">05 Toolbox</button>
+    <button class="tab-btn" onclick="show('s6')">06 Gated Site</button>
+    <button class="tab-btn" onclick="show('s7')">07 Open Scaffold</button>
+    <button class="tab-btn" onclick="show('s8')">08 Foundation</button>
+    <button class="tab-btn" onclick="show('s9')">09 Wrecking Ball</button>
+    <button class="tab-btn" onclick="show('s10')">10 Off-Blueprint</button>
+  </div>
+
+  <!-- 01 BLUEPRINT METHOD -->
+  <div class="sec active" id="s1">
+    <div class="s-hdr"><div class="num-b" style="background:#F5A623;color:#1A1A1A;">01</div><div class="s-ttl">The Blueprint Method</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#1a3a5c;color:#8ab8e6;">Clarity</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$9 to $47/mo</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div>
+        <div class="step-row">
+          <div class="step-box" style="border-color:#F5A623;color:#F5A623;"><span style="font-size:10px;display:block;color:#666;margin-bottom:3px;">Phase 1</span>[Foundation]</div>
+          <span class="arr">&#8594;</span>
+          <div class="step-box" style="border-color:#888;color:#888;"><span style="font-size:10px;display:block;color:#555;margin-bottom:3px;">Phase 2</span>[Structure]</div>
+          <span class="arr">&#8594;</span>
+          <div class="step-box" style="border-color:#ccc;color:#ccc;"><span style="font-size:10px;display:block;color:#777;margin-bottom:3px;">Phase 3</span>[Handover]</div>
+        </div>
+        <div style="margin-top:18px;font-size:13px;font-style:italic;color:#555;text-align:center;">a clear plan removes all hesitation</div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-ruler-2"></i></div><div class="i-text"><strong>The core idea:</strong> Your audience is overwhelmed. When you lay out a clear 3-phase plan, you remove the biggest barrier to joining: not knowing where to start. The plan is what they are buying, not just the content.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-ruler-2"></i></div><div class="i-text"><strong>Fits your community if:</strong> Your niche has a logical sequence people can follow. Works brilliantly when the topic feels complicated or intimidating to newcomers.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-ruler-2"></i></div><div class="i-text"><strong>Builder advantage:</strong> Name your Skool classroom modules after each phase so the about page and the product feel like one seamless blueprint from the moment they join.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t1')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t1">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">Most people fail at [niche] not because they lack talent.
+They fail because nobody gave them a clear plan.
+
+Here is the exact blueprint I use with every member:
+
+Phase 1: [Foundation step — what they do first]
+Phase 2: [Build step — what creates momentum]
+Phase 3: [Result step — what they now have]
+
+Inside [Community Name] you get:
+- [Primary resource or course]
+- [Live support element]
+- [Community or accountability element]
+
+[Price]/mo. Cancel any time.
+[X] builders already working the plan.</div>
+        <button class="cp-btn" onclick="cp('t1')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Making the phases too vague.</strong> "Learn, Practice, Grow" tells nobody anything. Your phases need to describe a specific action or outcome. "Map your niche, build your first module, launch to 50 members" is a blueprint. Generic labels are not.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Naming 5 or 6 phases instead of 3.</strong> The power of this format is simplicity. More steps signals complexity, which is the exact problem you are trying to solve. If you have more than 3, collapse them.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 QUICK BUILD -->
+  <div class="sec" id="s2">
+    <div class="s-hdr"><div class="num-b" style="background:#2a2a2a;color:#F5A623;border:1px solid #F5A623;">02</div><div class="s-ttl">The Quick Build</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#2a1a00;color:#F5A623;border:1px solid #F5A623;">Speed + Early Win</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$9 to $29/mo</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div>
+        <div style="font-size:11px;color:#555;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;text-align:center;">7-Day Build Sprint</div>
+        <div class="day-row"><div class="day-sq">1</div><div class="day-sq">2</div><div class="day-sq">3</div><div class="day-sq">4</div><div class="day-sq">5</div><div class="day-sq">6</div><div class="day-sq">7</div></div>
+        <div style="font-size:16px;font-weight:500;color:#fff;text-align:center;">Day <span style="color:#F5A623;">7</span> of 7</div>
+        <div style="font-size:13px;font-style:italic;color:#555;margin-top:8px;text-align:center;">show up for 7 days, leave with a result</div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-bolt"></i></div><div class="i-text"><strong>The core idea:</strong> Lead with a short sprint challenge. A quick tangible win builds trust faster than any sales pitch and converts people into long-term paying members before they even think about cancelling.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-bolt"></i></div><div class="i-text"><strong>Fits your community if:</strong> You can deliver a real, nameable result within 7 to 30 days. The more specific the win, the better this works.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-bolt"></i></div><div class="i-text"><strong>Builder advantage:</strong> Pin the next sprint start date in your Events tab. That visible date on your about page turns general interest into "I need to join this week."</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t2')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t2">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">Join the [X]-Day [Result] Sprint. Free with membership.
+
+Give me [X] minutes a day for [X] days and I will walk you through exactly how to [specific outcome].
+
+Day 1: [first quick win]
+Day [X]: [the big result]
+
+The sprint is included free when you join. After that you get:
+- [Ongoing resource]
+- [Support element]
+- [Number] members sharing progress and helping each other
+
+[Price]/mo. Next sprint kicks off [date or day].
+Grab your spot before it fills.</div>
+        <button class="cp-btn" onclick="cp('t2')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Promising a result that takes longer than 30 days.</strong> "Lose 10kg in 7 days" kills credibility. "Write your first 3 emails and send to a list of 100" in 7 days is believable and specific. The win needs to be real and achievable in the timeframe you name.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Not naming the Day 1 win.</strong> The hook is results before you pay a cent. If you only describe the Day 7 outcome, you lose the momentum. Name something they will accomplish or feel differently about on Day 1. That is the real sell.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 HARD HAT -->
+  <div class="sec" id="s3">
+    <div class="s-hdr"><div class="num-b" style="background:#F5A623;color:#1A1A1A;">03</div><div class="s-ttl">The Hard Hat Authority</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#2a1a00;color:#F5A623;border:1px solid #F5A623;">Track Record</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$47 to $199/mo</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div>
+        <div class="chk-row"><div class="chk-sq"><i class="ti ti-check" style="font-size:13px;color:#1A1A1A;"></i></div><span>Certified / Award-winning <span style="color:#555;">[your credential]</span></span></div>
+        <div class="chk-row"><div class="chk-sq"><i class="ti ti-check" style="font-size:13px;color:#1A1A1A;"></i></div><span><span style="color:#555;">[X,000]</span>+ people taught or served</span></div>
+        <div class="chk-row"><div class="chk-sq"><i class="ti ti-check" style="font-size:13px;color:#1A1A1A;"></i></div><span>Featured in <span style="color:#555;">[publication or platform]</span></span></div>
+        <div class="chk-row"><div class="chk-sq"><i class="ti ti-check" style="font-size:13px;color:#1A1A1A;"></i></div><span><span style="color:#555;">[X]</span> years in the field, not the classroom</span></div>
+        <div style="font-size:13px;font-style:italic;color:#555;margin-top:14px;text-align:center;">the hard hat is earned, not bought</div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-hard-hat"></i></div><div class="i-text"><strong>The core idea:</strong> Your proof does the persuading. Real-world results, verified numbers, and notable names remove the need for clever copy. You list what you have done and let that speak for itself.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-hard-hat"></i></div><div class="i-text"><strong>Fits your community if:</strong> You have genuinely impressive credentials, measurable client results, certifications, or media recognition that can be stated as facts.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-hard-hat"></i></div><div class="i-text"><strong>Builder advantage:</strong> This strategy supports a higher price point. At $49 to $199/mo, your audience needs to feel they are in the hands of a genuine expert. Your credentials do that heavy lifting.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t3')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t3">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">Hi, I am [Name].
+
+[Credential or title that establishes authority]
+[Impressive number: students, clients, years, results]
+[Media or platform recognition]
+[Specific proof point they can verify]
+
+I built [Community Name] so [who it serves] can get [transformation] without [the hard part they want to skip].
+
+What is inside:
+- [Flagship course or training]
+- [Live access element]
+- [Signature resource]
+
+[Price]/mo. [X] members. Cancel any time.
+Start learning from someone who has actually done it.</div>
+        <button class="cp-btn" onclick="cp('t3')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Leading with credentials that do not connect to the outcome.</strong> A PhD in biochemistry does not build trust for a business coaching community. Every credential you list should make the reader think "that is exactly why I would trust them with this specific thing."</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Writing a resume instead of a sales page.</strong> Listing 12 achievements in a row is exhausting to read. Pick your 3 most relevant and most impressive. Then move quickly into what that experience means for the member, not just for your ego.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 CREW MAGNET -->
+  <div class="sec" id="s4">
+    <div class="s-hdr"><div class="num-b" style="background:#1C2B1A;color:#7aaa60;border:1px solid #3a5a30;">04</div><div class="s-ttl">The Crew Magnet</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#1C2B1A;color:#7aaa60;border:1px solid #3a5a30;">Community First</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$9 to $15/mo</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div style="position:relative;width:210px;height:100px;">
+        <div style="position:absolute;width:24px;height:24px;border-radius:50%;background:#F5A623;top:10px;left:40px;"></div>
+        <div style="position:absolute;width:32px;height:32px;border-radius:50%;background:#fff;top:6px;left:65px;"></div>
+        <div style="position:absolute;width:20px;height:20px;border-radius:50%;background:#F5A623;opacity:.6;top:22px;left:94px;"></div>
+        <div style="position:absolute;width:28px;height:28px;border-radius:50%;background:#7aaa60;opacity:.35;top:36px;left:50px;"></div>
+        <div style="position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;opacity:.2;top:48px;left:82px;"></div>
+        <div style="position:absolute;font-size:14px;font-weight:500;color:#fff;top:32px;left:118px;">Your crew</div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-users"></i></div><div class="i-text"><strong>The core idea:</strong> The people in the room are the product. You are not selling a course or a curriculum. You are selling access to a specific group who share the same passion, obsession, or identity.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-users"></i></div><div class="i-text"><strong>Fits your community if:</strong> Your niche is passion-driven and the social element is a major part of the value. Hobbies, creative fields, lifestyle niches, and enthusiast communities are ideal.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-users"></i></div><div class="i-text"><strong>Builder advantage:</strong> Lean into the Skool leaderboard and gamification in your copy. Mentioning how members earn points and unlock content reinforces that this is an active, alive community, not a static course library.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t4')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t4">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">If you are a [identity label], you just found your crew.
+
+This is not a course you watch alone. It is a room full of people who actually get it.
+
+Inside we share:
+- [What members post or talk about]
+- [Signature activity or weekly ritual]
+- [The thing that makes the energy here different]
+
+No beginner bashing. No gatekeeping. Just [X] people obsessed with [niche topic] helping each other get better.
+
+[Price]/mo. Less than [relatable comparison].
+Come in, say hello, and feel the difference within 5 minutes.</div>
+        <button class="cp-btn" onclick="cp('t4')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Describing a vibe without proving it exists.</strong> "Amazing supportive community" is what everyone says. Describe a specific thing that happens inside: a weekly ritual, a type of post, a recurring conversation. That makes the energy feel real and not just aspirational.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Forgetting to name the identity.</strong> This blueprint works because people join when they feel "these are my people." The identity label does the heavy lifting. "If you are a serious home barista who thinks about extraction pressure for fun" is a hook. "Coffee lovers" is not.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 LOADED TOOLBOX -->
+  <div class="sec" id="s5">
+    <div class="s-hdr"><div class="num-b" style="background:#F5A623;color:#1A1A1A;">05</div><div class="s-ttl">The Loaded Toolbox</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#2a1a00;color:#F5A623;border:1px solid #F5A623;">Price Anchoring</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$29 to $119/mo</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div>
+        <div class="stk-row"><span style="color:#555;">[Resource A]</span><span style="color:#555;">$[X]</span></div>
+        <div class="stk-row"><span style="color:#555;">[Resource B]</span><span style="color:#555;">$[X]</span></div>
+        <div class="stk-row"><span style="color:#555;">[Live Calls]</span><span style="color:#555;">$[X]</span></div>
+        <div class="stk-row hi"><span>[Flagship Course]</span><span>$[X]</span></div>
+        <div style="font-size:12px;color:#555;margin-top:10px;">Your price</div>
+        <div style="font-size:26px;font-weight:600;color:#fff;">$[29]/mo</div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-tool"></i></div><div class="i-text"><strong>The core idea:</strong> You give every item in your toolbox a dollar value, then show the total against your actual price. The gap between what they would pay separately and what membership costs is what converts people.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-tool"></i></div><div class="i-text"><strong>Fits your community if:</strong> You have at least 3 to 4 distinct resources you could each put a price on. Courses, templates, swipe files, tools, and live calls all work. Best used at $29/mo and above.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-tool"></i></div><div class="i-text"><strong>Builder advantage:</strong> List each Skool classroom module as a separate line item with its own dollar value. The community access itself gets its own value too. Your about page becomes a genuine price comparison.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t5')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t5">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">Here is everything inside [Community Name]:
+
+[Resource or Course A] — valued at $[X]
+[Resource or Course B] — valued at $[X]
+[Live calls or coaching] — valued at $[X]/mo
+[Bonus resource or template pack] — valued at $[X]
+[Community access and peer support] — priceless
+
+Total value: $[X,XXX]+
+
+Your price: $[XX]/mo. Cancel any time.
+That is less than $[X] a day to get [the transformation they want].
+
+[X] members already inside. Join them.</div>
+        <button class="cp-btn" onclick="cp('t5')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Inflating the values so much it loses credibility.</strong> If your community costs $29/mo and you are claiming $4,997 in value, people do the maths and it feels fake. Keep the ratio believable: 10x is compelling, 100x triggers scepticism.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Listing things people do not actually want.</strong> A 47-page PDF workbook is not worth $297 in most people's minds. Price what people genuinely value: live access, templates they can actually use, courses with real outcomes. Padding the stack with filler kills the whole format.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 GATED SITE -->
+  <div class="sec" id="s6">
+    <div class="s-hdr"><div class="num-b" style="background:#2a2a2a;color:#F5A623;border:1px solid #F5A623;">06</div><div class="s-ttl">The Gated Site</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#2a1a00;color:#F5A623;border:1px solid #F5A623;">Exclusivity</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$49 to $500+/mo</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div style="text-align:center;">
+        <div class="lock-box">
+          <i class="ti ti-shield-lock" style="font-size:28px;color:#F5A623;"></i>
+          <span style="font-size:12px;color:#F5A623;letter-spacing:.1em;text-transform:uppercase;font-weight:600;">Apply to enter</span>
+        </div>
+        <div style="font-size:13px;font-style:italic;color:#444;margin-top:16px;">not everyone gets a hard hat for this site</div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-shield-lock"></i></div><div class="i-text"><strong>The core idea:</strong> Membership requires qualifying, not just paying. An application process signals that the people inside have been vetted and the standard of the room is protected. Scarcity and selectivity drive desire.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-shield-lock"></i></div><div class="i-text"><strong>Fits your community if:</strong> You serve business owners, senior professionals, or advanced practitioners who will pay a premium to be in a room with peers at the same level. Quality of membership is the selling point.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-shield-lock"></i></div><div class="i-text"><strong>Builder advantage:</strong> Your Skool membership questions become visible social proof of the standard you hold. Frame them on your about page as a qualifier, not a form. "We ask three questions before approving" signals this is a selective build.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t6')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t6">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">This community is not open to everyone.
+
+[Community Name] is built for [specific qualifier] who are serious about [outcome]. We keep numbers tight because the value here comes from who else is in the room.
+
+What approved members get:
+- [Premium resource one]
+- [Premium resource two]
+- Direct access to [expert, network, or inner circle]
+- [What makes the peer group genuinely valuable]
+
+You will be asked three questions before your spot is confirmed. We review every application personally.
+
+$[XX]/mo. [X] members. Waitlist open now.
+Apply below and we will be in touch within [timeframe].</div>
+        <button class="cp-btn" onclick="cp('t6')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Claiming exclusivity without actually being exclusive.</strong> If you approve every applicant automatically, people find out quickly and the positioning falls apart. You need to actually have standards, even if that is just a minimum revenue threshold or a real commitment to being active.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Being vague about who qualifies.</strong> "This is for serious people only" says nothing. "This is for agency owners doing $10k+/mo who are done with tactics and ready to work on the business" is specific enough that people self-select accurately, and the right people feel called in.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 OPEN SCAFFOLD -->
+  <div class="sec" id="s7">
+    <div class="s-hdr"><div class="num-b" style="background:#1C2B1A;color:#7aaa60;border:1px solid #3a5a30;">07</div><div class="s-ttl">The Open Scaffold</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#1C2B1A;color:#7aaa60;border:1px solid #3a5a30;">Free Lead Gen</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">Free</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div style="width:160px;">
+        <div class="scaf-rung"></div>
+        <div style="display:flex;gap:9px;margin-bottom:8px;align-items:center;">
+          <div class="scaf-pole" style="height:26px;"></div>
+          <div style="flex:1;height:6px;border-radius:3px;background:#F5A623;"></div>
+          <div class="scaf-pole" style="height:26px;"></div>
+        </div>
+        <div class="scaf-rung"></div>
+        <div style="display:flex;gap:9px;margin-bottom:8px;align-items:center;">
+          <div class="scaf-pole" style="height:26px;"></div>
+          <div style="flex:1;height:6px;border-radius:3px;background:#2a2a2a;border:1px solid #3a3a3a;"></div>
+          <div class="scaf-pole" style="height:26px;"></div>
+        </div>
+        <div class="scaf-rung"></div>
+        <div style="text-align:center;font-size:13px;font-style:italic;color:#555;margin-top:10px;">built for scale, not for sale</div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-stairs"></i></div><div class="i-text"><strong>The core idea:</strong> Genuine free value at scale is your growth engine. You become the go-to free resource in your niche first. Revenue comes from a paid product that lives elsewhere or is unlocked inside later.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-stairs"></i></div><div class="i-text"><strong>Fits your community if:</strong> You have or are building a paid offer and want a warm audience. Also works if you monetise through sponsorships, services, or a back-end product rather than a monthly subscription.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-stairs"></i></div><div class="i-text"><strong>Builder advantage:</strong> Free communities appear prominently in Skool Discovery. Your about page becomes organic SEO. The more specific and generous your description, the more people it pulls in without paid ads.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t7')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t7">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">Everything here is free. No credit card. No pitch.
+
+[Community Name] is the free home for [who this is for] who want to [desired outcome] without paying for it upfront.
+
+What you get on day one:
+- [Free course or training resource]
+- [Free templates, tools, or downloads]
+- [Live events or community challenges]
+- [Number]+ members sharing what is working right now
+
+No ads. No upsells cluttering your feed. Just the best free resource for [niche] online.
+
+Join free in 30 seconds.
+
+If you ever want deeper support, there is a paid option too. But most people get everything they need for free.</div>
+        <button class="cp-btn" onclick="cp('t7')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Saying it is free without explaining why.</strong> People are suspicious of free things. Tell them upfront what the model is: "This is free because I have a paid programme for people who want to go deeper. You will never need it to get value here." Transparency converts better than silence.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Not making the free value feel substantial.</strong> "Join for free and get access to our community" is weak. Name the specific things they get on day one: the course, the templates, the live event. Make it feel like they would be crazy not to join.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 FOUNDATION STORY -->
+  <div class="sec" id="s8">
+    <div class="s-hdr"><div class="num-b" style="background:#2a2a2a;color:#F5A623;border:1px solid #F5A623;">08</div><div class="s-ttl">The Foundation Story</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#2a1a00;color:#F5A623;border:1px solid #F5A623;">Personal Connection</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$9 to $67/mo</span>
+    </div>
+    <div class="v-card" style="padding:32px;"><div class="v-stripe"></div>
+      <div style="display:flex;align-items:stretch;gap:0;width:100%;max-width:400px;">
+        <div style="flex:1;background:#111;border-radius:10px 0 0 10px;padding:20px 18px;border:1px solid #222;border-right:none;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#444;margin-bottom:14px;">Then</div>
+          <div style="font-size:14px;color:#444;line-height:2;text-decoration:line-through;">No clear path forward</div>
+          <div style="font-size:14px;color:#444;line-height:2;text-decoration:line-through;">Trying everything alone</div>
+          <div style="font-size:14px;color:#444;line-height:2;text-decoration:line-through;">Wasting time and money</div>
+        </div>
+        <div style="width:4px;background:#F5A623;flex-shrink:0;"></div>
+        <div style="flex:1;background:#1e1e1e;border-radius:0 10px 10px 0;padding:20px 18px;border:1px solid #2a2a2a;border-left:none;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F5A623;margin-bottom:14px;">Now</div>
+          <div style="font-size:14px;color:#ccc;line-height:2;">A proven blueprint</div>
+          <div style="font-size:14px;color:#ccc;line-height:2;">A crew behind you</div>
+          <div style="font-size:14px;color:#ccc;line-height:2;">A faster result</div>
+        </div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-home-2"></i></div><div class="i-text"><strong>The core idea:</strong> Sharing the exact struggle your audience is currently in creates instant recognition. When they see their own situation in your story, joining feels less like a purchase and more like a natural next step.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-home-2"></i></div><div class="i-text"><strong>Fits your community if:</strong> You genuinely overcame the same challenge your audience faces today. The more precisely your past struggle matches their current one, the stronger the connection.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-home-2"></i></div><div class="i-text"><strong>Builder advantage:</strong> Skool's about page supports longer text. This is the one format that rewards a fuller narrative. A 200-word origin story outperforms a 30-word tagline when the story is real.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t8')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t8">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">A few years ago I was exactly where you are right now.
+
+[Describe their current situation in specific, honest terms]
+
+I tried [what they have already tried]. It did not work because [the real reason]. I wasted [time or money or energy] figuring that out.
+
+Then [the turning point: what you discovered or changed].
+
+Today [the result you now have]. And I built this community so you get there in [timeframe] instead of [how long it took you].
+
+Inside [Community Name]:
+- [What they will learn or access]
+- [The shortcut your journey revealed]
+- [The support structure you wish you had]
+
+[Price]/mo. Your story does not have to take as long as mine did.</div>
+        <button class="cp-btn" onclick="cp('t8')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Making the story about you instead of them.</strong> The purpose of your story is to make the reader feel understood, not to impress them with your journey. Every sentence should land with the reader thinking "that is exactly what I am going through." The moment it becomes self-indulgent, you lose them.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Skipping the turning point.</strong> The structure is: struggle, turning point, result. Most people write the struggle and the result but rush or skip the turning point. That is actually the most important part, because it is the proof that the transformation is real and repeatable.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 WRECKING BALL -->
+  <div class="sec" id="s9">
+    <div class="s-hdr"><div class="num-b" style="background:#F5A623;color:#1A1A1A;">09</div><div class="s-ttl">The Wrecking Ball</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#2a1a00;color:#F5A623;border:1px solid #F5A623;">Problem First</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$9 to $49/mo</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div class="pain-wrap">
+        <div class="pain-side">
+          <div style="font-size:10px;color:#444;text-align:center;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">What they have</div>
+          <div class="pain-item">Overwhelmed</div>
+          <div class="pain-item">Spinning wheels</div>
+          <div class="pain-item">No traction</div>
+        </div>
+        <div class="pain-div"></div>
+        <div class="pain-side">
+          <div style="font-size:10px;color:#F5A623;text-align:center;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">What they get</div>
+          <div class="fix-col">
+            <span class="fix-badge">Clarity</span>
+            <span class="fix-badge">Momentum</span>
+            <span class="fix-badge">Results</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-crane"></i></div><div class="i-text"><strong>The core idea:</strong> Name their frustration so precisely that they feel seen before you say a single word about your offer. When someone reads their own situation in your opening line, they are already half-converted.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-crane"></i></div><div class="i-text"><strong>Fits your community if:</strong> Your audience is stuck and knows it. Works best when you can articulate their problem in sharper language than they use themselves. Specificity is everything here.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-crane"></i></div><div class="i-text"><strong>Builder advantage:</strong> A sharp, problem-specific headline dramatically improves your visibility in Skool Discovery. Generic descriptions get scrolled past. Specific pain language stops people cold.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t9')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t9">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">Still [specific frustration in plain language]?
+
+You have probably already tried [what they have already attempted]. You know the theory. The problem is not knowledge, it is [the actual bottleneck].
+
+[Community Name] is built specifically for [qualifier] who are done with [the old broken approach] and ready to [the outcome they actually want].
+
+Here is what shifts when you join:
+No more [pain point one]
+No more [pain point two]
+Instead you get [positive outcome one]
+And [positive outcome two]
+
+[Price]/mo. [X] people already made the switch.
+If that sounds like where you are, you are in the right place.</div>
+        <button class="cp-btn" onclick="cp('t9')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Using generic pain language that applies to everyone.</strong> "Are you struggling to grow your business?" is not a Wrecking Ball. The power of this format is hyper-specificity. "Still rewriting your about page for the fifth time and getting zero signups?" hits a completely different nerve.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Staying in the problem too long.</strong> Two or three sentences of pain is a hook. Six sentences of pain is exhausting and starts to feel like the reader is being lectured about how bad their life is. Name it fast, acknowledge it clearly, then pivot to the solution.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 OFF-BLUEPRINT -->
+  <div class="sec" id="s10">
+    <div class="s-hdr"><div class="num-b" style="background:#1C2B1A;color:#7aaa60;border:1px solid #3a5a30;">10</div><div class="s-ttl">The Off-Blueprint Build</div></div>
+    <div class="tag-r">
+      <span class="tag" style="background:#1C2B1A;color:#7aaa60;border:1px solid #3a5a30;">Stand Out</span>
+      <span class="tag" style="background:#F5A623;color:#1A1A1A;">$5 to $35/mo</span>
+    </div>
+    <div class="v-card"><div class="v-stripe"></div>
+      <div style="text-align:center;">
+        <span class="strikeout">Copy the industry blueprint</span>
+        <span class="strikeout">Follow the loudest voices</span>
+        <span class="strikeout">Build like everyone else</span>
+        <div style="font-size:20px;font-weight:600;color:#fff;margin-top:14px;">Build it <span class="accent">your way.</span></div>
+      </div>
+    </div>
+    <div class="i-card">
+      <div class="i-row"><div class="i-dot"><i class="ti ti-pencil-minus"></i></div><div class="i-text"><strong>The core idea:</strong> Take a direct stance against the dominant way things are done in your niche. Name what is broken about the standard approach and position your community as the alternative people have been looking for.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-pencil-minus"></i></div><div class="i-text"><strong>Fits your community if:</strong> Your niche is full of noise, outdated advice, or over-complicated frameworks. Works when your audience has tried the popular approach and is frustrated that it has not worked for them.</div></div>
+      <div class="i-row"><div class="i-dot"><i class="ti ti-pencil-minus"></i></div><div class="i-text"><strong>Builder advantage:</strong> A bold contrarian about page gets shared. People screenshot it, post it, and tag others who feel the same way. Your about page becomes your first piece of organic content.</div></div>
+    </div>
+    <button class="tpl-btn" onclick="tog('t10')"><i class="ti ti-clipboard-text"></i> Show copy template</button>
+    <div class="tpl-a" id="t10">
+      <div class="tpl-wrap"><div class="tpl-lbl">Copy template — replace the brackets with your own words</div>
+        <div class="tpl-blk">Ignore everything [the industry / the gurus / the standard playbook] told you about [niche topic].
+
+Most [niche] advice is [the problem: overcomplicated / stale / built to sell courses not get results]. You have felt it. You follow the steps. Nothing moves.
+
+[Community Name] runs on one principle: [your contrarian belief stated plainly].
+
+We do not [the thing everyone else does].
+We [your different approach] instead.
+
+The results speak for themselves: [specific proof point or member win].
+
+Inside: [what they get, stated simply]
+
+[Price]/mo. No fluff.
+Join [X] people who got tired of building from someone else's blueprint.</div>
+        <button class="cp-btn" onclick="cp('t10')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button>
+      </div>
+      <div class="mistakes-card">
+        <div class="mistakes-heading"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Common mistakes with this blueprint</div>
+        <div class="mistake-row"><div class="mistake-num">1</div><div class="mistake-text"><strong>Being contrarian without having a real alternative.</strong> Saying "forget everything you have been taught" only works if you follow it with a genuinely different approach. If your method is basically the same as everyone else's, the positioning falls apart the moment someone joins and looks around.</div></div>
+        <div class="mistake-row"><div class="mistake-num">2</div><div class="mistake-text"><strong>Coming across as angry rather than confident.</strong> There is a fine line between bold positioning and sounding bitter about the industry. The best version of this format is calm, clear, and slightly amused by how wrong everyone else has it, not ranting. Tone makes or breaks it.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="tape"></div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <i class="ti ti-tool cta-bg-icon" aria-hidden="true"></i>
+  <p class="cta-eyebrow">Building alone is slower.</p>
+  <h2 class="cta-heading">Skool Builders is where Skool hosts figure it out together.</h2>
+  <div class="cta-divider"></div>
+  <p class="cta-sub">A paid implementation community for hosts growing education, expertise, and membership businesses on Skool.</p>
+  <div class="cta-checks-wrap">
+    <div class="cta-checks">
+      <div class="cta-check"><div class="cta-check-icon"><i class="ti ti-check" style="font-size:12px;color:#1A1A1A;"></i></div><span>Weekly Build Sessions</span></div>
+      <div class="cta-check"><div class="cta-check-icon"><i class="ti ti-check" style="font-size:12px;color:#1A1A1A;"></i></div><span>Practical growth tools</span></div>
+      <div class="cta-check"><div class="cta-check-icon"><i class="ti ti-check" style="font-size:12px;color:#1A1A1A;"></i></div><span>Honest feedback</span></div>
+      <div class="cta-check"><div class="cta-check-icon"><i class="ti ti-check" style="font-size:12px;color:#1A1A1A;"></i></div><span>Real builders, not spectators</span></div>
+    </div>
+  </div>
+  <a href="https://www.skool.com/skool-builders/about" class="cta-btn">BECOME A FOUNDING MEMBER &rarr;</a>
+  <p class="cta-note">$22/month founding rate &nbsp;&bull;&nbsp; Locked in for life &nbsp;&bull;&nbsp; Cancel any time</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo">KYLIE KELLY</div>
+  <div class="footer-links">
+    <a href="https://kyliekelly.com/">KYLIEKELLY.COM</a>
+    <span>&#183;</span>
+    <a href="https://kyliekelly.com/privacy-policy">PRIVACY POLICY &amp; TERMS</a>
+  </div>
+  <p class="footer-legal">
+    &copy; 2026 Kylie Kelly. All rights reserved.<br>
+    This resource is for members of Skool Builders. Educational use only, not financial or legal advice.<br>
+    By using this tool you agree to Kylie Kelly's <a href="https://kyliekelly.com/privacy-policy">Terms &amp; Conditions</a>.
+  </p>
+</div>
+
+<script>
+var answers={};
+
+function toggleQuiz(){
+  var block=document.getElementById('quiz-block');
+  var chevron=document.getElementById('quiz-chevron');
+  var label=document.getElementById('quiz-toggle-label');
+  var isOpen=block.classList.contains('open');
+  if(isOpen){
+    block.classList.remove('open');
+    chevron.style.transform='rotate(0deg)';
+    label.textContent='Not sure which blueprint to use? Find out in 3 questions';
+  } else {
+    block.classList.add('open');
+    chevron.style.transform='rotate(180deg)';
+    label.textContent='Hide the quiz';
+  }
+}
+
+function selectOpt(el){
+  var q=el.getAttribute('data-q');
+  document.querySelectorAll('[data-q="'+q+'"]').forEach(function(b){b.classList.remove('sel');});
+  el.classList.add('sel');
+  answers[q]=el.getAttribute('data-v');
+}
+
+function runQuiz(){
+  if(Object.keys(answers).length<3){alert('Please answer all three questions first.');return;}
+  var niche=answers['1'],price=answers['2'],asset=answers['3'];
+  var picks=[];
+  if(price==='free'){picks=[{id:'s7',label:'07 Open Scaffold'}];}
+  else if(price==='high'){picks=[{id:'s6',label:'06 Gated Site'}];}
+  else {
+    if(asset==='story') picks.push({id:'s8',label:'08 Foundation Story'});
+    if(asset==='creds') picks.push({id:'s3',label:'03 Hard Hat Authority'});
+    if(asset==='resources') picks.push({id:'s5',label:'05 Loaded Toolbox'});
+    if(asset==='energy') picks.push({id:'s4',label:'04 Crew Magnet'});
+    if(niche==='system'&&!picks.find(function(p){return p.id==='s1';})) picks.push({id:'s1',label:'01 Blueprint Method'});
+    if(niche==='transform'&&price==='low') picks.push({id:'s2',label:'02 Quick Build'});
+    if(picks.length===0) picks.push({id:'s9',label:'09 Wrecking Ball'});
+    if(picks.length>2) picks=picks.slice(0,2);
+  }
+  var whyMap={
+    's1':'Your niche has a clear process people want to follow. A blueprint format makes that feel structured and achievable.',
+    's2':'You can deliver a fast win, and your price point benefits from showing results before asking for commitment.',
+    's3':'Your credentials are the strongest reason to join. Let your track record do the talking.',
+    's4':'The energy and identity of your community is the product. Lead with who is in the room.',
+    's5':'You have multiple resources that each have real value. Show the maths and the price becomes obvious.',
+    's6':'Your audience values being in a selective room. Make them qualify and they will want in more.',
+    's7':'A free community gives you scale and discovery. Monetise through a back-end offer.',
+    's8':'Your personal journey matches what your audience is going through. That connection is your strongest asset.',
+    's9':'Your audience is frustrated and stuck. Name that precisely and you will stop them mid-scroll.',
+    's10':'Your market is saturated with noise. A clear contrarian stance gives you instant differentiation.'
+  };
+  var html='';
+  picks.forEach(function(p){html+='<button class="result-pick" onclick="show(\''+p.id+'\')"><i class="ti ti-arrow-right"></i>'+p.label+'</button>';});
+  document.getElementById('result-picks').innerHTML=html;
+  document.getElementById('result-why').textContent=whyMap[picks[0].id]||'';
+  document.getElementById('quiz-result').classList.add('show');
+}
+
+function resetQuiz(){
+  answers={};
+  document.querySelectorAll('.q-opt').forEach(function(b){b.classList.remove('sel');});
+  document.getElementById('quiz-result').classList.remove('show');
+}
+
+function show(id){
+  document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+  var idx=parseInt(id.replace('s',''))-1;
+  document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+  document.querySelector('.top-nav').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function tog(id){
+  document.getElementById(id).classList.toggle('open');
+}
+
+function cp(id){
+  var el=document.getElementById(id);
+  if(!el)return;
+  var tb=el.querySelector('.tpl-blk');
+  if(!tb)return;
+  navigator.clipboard.writeText(tb.innerText).then(function(){
+    var btn=el.querySelector('.cp-btn');
+    if(btn){
+      btn.innerHTML='<i class="ti ti-check" style="font-size:13px"></i> Copied!';
+      btn.style.color='#F5A623';btn.style.borderColor='#F5A623';
+      setTimeout(function(){
+        btn.innerHTML='<i class="ti ti-copy" style="font-size:13px"></i> Copy template';
+        btn.style.color='';btn.style.borderColor='';
+      },2000);
+    }
+  });
+}
+</script>
+</body>
+</html>
